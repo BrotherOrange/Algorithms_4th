@@ -1,5 +1,7 @@
 package searchings;
 
+import edu.princeton.cs.algs4.Queue;
+
 public class SequentialSearchST<Key, Value> {
 
     private Node first;
@@ -35,5 +37,12 @@ public class SequentialSearchST<Key, Value> {
             }
         }
         first = new Node(key, val, first);
+    }
+
+    public Iterable<Key> keys()  {
+        Queue<Key> queue = new Queue<Key>();
+        for (Node x = first; x != null; x = x.next)
+            queue.enqueue(x.key);
+        return queue;
     }
 }
